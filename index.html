@@ -1,41 +1,39 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <!-- Import d3 v6 and clustermap.js -->
-    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <title>bobbyhadz.com</title>
+    <meta charset="UTF-8" />
+    <script src="http://d3js.org/d3.v6.min.js"></script>
     <script src="clustermap.min.js"></script>
-
-    <!-- Make div take up entire viewport -->
-    <!-- clustermap.js <svg> element has 100% width/height -->
-    <style>
-      div#plot {
-        width: 100vw;
-        height: 100vh;
-      }
-      #plot div {
-        width: 100vw;
-        height: 100vh;
-      }
-    </style>
   </head>
+
   <body>
-    sdsd
-    <!-- Create a <div> container for the clustermap.js plot -->
-    <!-- clustermap.js will create child <svg> (plot) and <input> (colour picker) elements -->
+    <select id="select">
+      <option value="">--Choose an option--</option>
+      <option value="BGC000001.json">Horse 🐴</option>
+      <option value="wolf">Wolf 🐺</option>
+      <option value="fox">Fox 🦊</option>
+    </select>
     <div id="plot"></div>
-    <script>
-      // Create and configure the ClusterMap function.
+
+    <script >
       let chart = ClusterMap.ClusterMap().config({
         cluster: {
           spacing: 30,
           alignLabels: true,
         },
       });
+      const select = document.getElementById('select');
 
-      // Load in data via d3.json, select <div> elements and call the
-      // chart function on the selection.
-      d3.json("data.json").then((data) => {
+    select.addEventListener('change', function handleChange(event) {
+
+    console.log(event.target.value); // 👉️ get selected VALUE
+    d3.json(event.target.value).then((data) => {
         d3.select("#plot").datum(data).call(chart);
-      });
+    });
+
+});
+
     </script>
   </body>
 </html>
