@@ -1,9 +1,0 @@
-{
-    "message": "Blob with id 722aba1f-1580-11e8-aee7-670a824b2c57 does not exist",
-    "_links": {
-        "self": {
-            "href": "/722aba1f-1580-11e8-aee7-670a824b2c57",
-            "templated": false
-        }
-    }
-}
